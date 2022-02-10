@@ -16,6 +16,12 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Remy's Day Off")
 # frame rate of game per second
 FPS = 60
+#creating a player
+player = Rat(WIDTH/2 - 50, 675)
+#making a crumb
+crumb = Crumb(300, 100)
+#making a knife
+knife = Knife(500, 100)
 
 def main():
     # make a clock object that will be used
@@ -32,5 +38,32 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
+
+        #handle player movement from key presses
+        # this gets a list of booleans showing which keys are currently pressed
+        keysPressed = pygame.key.get_pressed()
+
+         # if the 'w' key is pressed
+        if keysPressed[pygame.K_a] == True:
+            player.x -= player.speed
+        elif keysPressed[pygame.K_d] == True:
+            player.x += player.speed
+
+
+        # This fills the game window to be the given RGB color
+        WINDOW.fill((0,0,0))
+        
+        player.render(WINDOW)
+        crumb.render(WINDOW)
+        knife.render(WINDOW)
         # put code here that should be ran every frame
         pygame.display.update()
+
+
+
+
+#******************
+#code to run
+#******************
+
+main()

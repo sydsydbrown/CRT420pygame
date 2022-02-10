@@ -7,6 +7,7 @@ class Rat:
     width = 100
     height = 100
     speed = 10
+    points = 0
     isDead = False
 
     #constructor funtion
@@ -16,7 +17,7 @@ class Rat:
     
     #render function
     def render(self, _surface):
-        playerRect = pygame.Rect(self.x, self.y, self.width, self.height)
+        ratRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (255, 0, 255), playerRect)
+        pygame.draw.rect(_surface, (255, 0, 255), ratRect)
