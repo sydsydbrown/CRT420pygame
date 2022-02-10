@@ -3,11 +3,9 @@ import pygame
 class Knife:
 
     #class vars with constant starting vals
-    health = 5
-    width = 100
-    height = 100
+    width = 10
+    height = 10
     speed = 10
-    isDead = False
 
     #constructor funtion
     def __init__(self, _x, _y):
@@ -16,7 +14,7 @@ class Knife:
     
     #render function
     def render(self, _surface):
-        playerRect = pygame.Rect(self.x, self.y, self.width, self.height)
+        knifeRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (255, 0, 255), playerRect)
+        pygame.draw.rect(_surface, (100, 50, 100), knifeRect)
