@@ -48,6 +48,15 @@ def main():
             player.x -= player.speed
         elif keysPressed[pygame.K_d] == True:
             player.x += player.speed
+    
+        crumb.y += crumb.speed
+        knife.y += knife.speed
+
+        if crumb.y >= HEIGHT:
+            crumb.y = 0
+        
+        if knife.y >= HEIGHT:
+            knife.y = 0
 
 
         # This fills the game window to be the given RGB color

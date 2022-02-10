@@ -5,7 +5,7 @@ class Crumb:
     #class vars with constant starting vals
     width = 10
     height = 10
-    speed = 10
+    speed = 5
 
     #constructor funtion
     def __init__(self, _x, _y):
@@ -17,4 +17,4 @@ class Crumb:
         crumbRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (255, 200, 200), crumbRect)
+        pygame.draw.rect(_surface, (219, 167, 77), crumbRect)
