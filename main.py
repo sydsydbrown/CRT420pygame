@@ -25,15 +25,15 @@ crumb = Crumb(300, 100)
 knife = Knife(500, 100)
 
 def playerMovement():
-        #handle player movement from key presses
-        # this gets a list of booleans showing which keys are currently pressed
-        keysPressed = pygame.key.get_pressed()
+    #handle player movement from key presses
+    # this gets a list of booleans showing which keys are currently pressed
+    keysPressed = pygame.key.get_pressed()
 
-         # if the 'w' key is pressed
-        if keysPressed[pygame.K_a] == True:
-            player.x -= player.speed
-        elif keysPressed[pygame.K_d] == True:
-            player.x += player.speed
+    # if the 'w' key is pressed
+    if keysPressed[pygame.K_a] == True:
+        player.x -= player.speed
+    elif keysPressed[pygame.K_d] == True:
+        player.x += player.speed
 
 
 
@@ -73,7 +73,6 @@ def main():
         knife.takeHealth(player, WIDTH)
         # put code here that should be ran every frame
         pygame.display.update()
-
 
 
 #******************
