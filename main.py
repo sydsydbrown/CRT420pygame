@@ -5,6 +5,7 @@ import pygame
 from Crumb import Crumb
 from Knife import Knife
 from Rat import Rat
+from Button import Button
 
 # define the size of the game window
 WIDTH = 1200   
@@ -23,7 +24,23 @@ crumb = Crumb(300, 100)
 #making a knife
 knife = Knife(500, 100)
 
+def playerMovement():
+        #handle player movement from key presses
+        # this gets a list of booleans showing which keys are currently pressed
+        keysPressed = pygame.key.get_pressed()
+
+         # if the 'w' key is pressed
+        if keysPressed[pygame.K_a] == True:
+            player.x -= player.speed
+        elif keysPressed[pygame.K_d] == True:
+            player.x += player.speed
+
+
+
 def main():
+# this funtion makes the window and runs the game
+# it's also where other functions are called
+
     # make a clock object that will be used
     # to make the game run at a constant frame rate, regulate the frame rate
     clock = pygame.time.Clock()
@@ -39,23 +56,29 @@ def main():
                 running = False
 
 
-        #handle player movement from key presses
-        # this gets a list of booleans showing which keys are currently pressed
-        keysPressed = pygame.key.get_pressed()
-
-         # if the 'w' key is pressed
-        if keysPressed[pygame.K_a] == True:
-            player.x -= player.speed
-        elif keysPressed[pygame.K_d] == True:
-            player.x += player.speed
+        if crumb.y >= HEIGHT:
+            crumb.y = 0
+        
+        if knife.y >= HEIGHT:
+            knife.y = 0
 
 
         # This fills the game window to be the given RGB color
         WINDOW.fill((0,0,0))
         
+        #player functions
         player.render(WINDOW)
+        playerMovement()
+
+        #crumb functions
         crumb.render(WINDOW)
+        crumbMove()
+        addPoints(player)
+
+        #knife functions
         knife.render(WINDOW)
+        knifeMove()
+        takeHealth(player)
         # put code here that should be ran every frame
         pygame.display.update()
 
