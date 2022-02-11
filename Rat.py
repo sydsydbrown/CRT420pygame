@@ -17,7 +17,7 @@ class Rat:
     
     #render function
     def render(self, _surface):
-        ratRect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.ratRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (255, 0, 255), ratRect)
+        pygame.draw.rect(_surface, (255, 0, 255), self.ratRect)

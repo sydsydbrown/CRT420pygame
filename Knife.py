@@ -1,7 +1,6 @@
 import random
 import pygame
 
-from main import WIDTH
 
 class Knife:
 
@@ -17,19 +16,22 @@ class Knife:
     
     #render function
     def render(self, _surface):
-        knifeRect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.knifeRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (122, 117, 106), knifeRect)
+        pygame.draw.rect(_surface, (122, 117, 106), self.knifeRect)
 
     #movement function
-    def knifeMove(self):
-        self.y += 7
+    def knifeMove(self, aWidth, aHeight):
+        self.y += self.speed
+        if self.y >= aHeight:
+            self.y = 0
+            self.x = random.randint(0, aWidth)
     
     #interaction with player (take health)
-    def takeHealth(self, target):
-        if target.rect.collideRect(self.rect):
+    def takeHealth(self, target, aWidth):
+        if target.ratRect.colliderect(self.knifeRect):
             target.health -= 1
             self.y = 0
-            self.x = random(0, WIDTH)
+            self.x = random.randint(0, aWidth)
             print("taken health")

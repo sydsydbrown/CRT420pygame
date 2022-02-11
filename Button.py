@@ -13,10 +13,10 @@ class Button:
     
     #render function
     def render(self, _surface):
-        buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (255, 0, 255), buttonRect)
+        pygame.draw.rect(_surface, (255, 0, 255), self.buttonRect)
 
     #collision detection
     def clickButton(self):
@@ -24,6 +24,6 @@ class Button:
             isPressed = False
         
         if pygame.mouse.get_pressed == True:
-            if pygame.mouse.rect.collideRect(self.rect):
+            if pygame.mouse.rect.colliderect(self.buttonRect):
                 isPressed = True
                 print("button was pressed")

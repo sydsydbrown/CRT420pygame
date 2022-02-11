@@ -72,13 +72,13 @@ def main():
 
         #crumb functions
         crumb.render(WINDOW)
-        crumbMove()
-        addPoints(player)
+        crumb.crumbMove(WIDTH, HEIGHT)
+        crumb.addPoints(player, WIDTH)
 
         #knife functions
         knife.render(WINDOW)
-        knifeMove()
-        takeHealth(player)
+        knife.knifeMove(WIDTH, HEIGHT)
+        knife.takeHealth(player, WIDTH)
         # put code here that should be ran every frame
         pygame.display.update()
 
