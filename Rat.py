@@ -21,3 +21,5 @@ class Rat:
 
         #drawing rectangle
         pygame.draw.rect(_surface, (255, 0, 255), self.ratRect)
+
+        

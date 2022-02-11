@@ -55,14 +55,6 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-
-        if crumb.y >= HEIGHT:
-            crumb.y = 0
-        
-        if knife.y >= HEIGHT:
-            knife.y = 0
-
-
         # This fills the game window to be the given RGB color
         WINDOW.fill((0,0,0))
         
@@ -81,8 +73,6 @@ def main():
         knife.takeHealth(player, WIDTH)
         # put code here that should be ran every frame
         pygame.display.update()
-
-##please work
 
 
 
