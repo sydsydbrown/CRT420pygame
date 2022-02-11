@@ -1,4 +1,7 @@
+import random
 import pygame
+
+from main import WIDTH
 
 class Knife:
 
@@ -18,3 +21,15 @@ class Knife:
 
         #drawing rectangle
         pygame.draw.rect(_surface, (122, 117, 106), knifeRect)
+
+    #movement function
+    def knifeMove(self):
+        self.y += 7
+    
+    #interaction with player (take health)
+    def takeHealth(self, target):
+        if target.rect.collideRect(self.rect):
+            target.health -= 1
+            self.y = 0
+            self.x = random(0, WIDTH)
+            print("taken health")

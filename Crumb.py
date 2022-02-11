@@ -1,4 +1,7 @@
+import random
 import pygame
+
+from main import WIDTH
 
 class Crumb:
 
@@ -18,3 +21,15 @@ class Crumb:
 
         #drawing rectangle
         pygame.draw.rect(_surface, (219, 167, 77), crumbRect)
+
+    #movement function
+    def crumbMove(self):
+        self.y += 5
+
+    #interaction with player (add points)
+    def addPoints(self, target):
+        if target.rect.collideRect(self.rect):
+            target.points += 1
+            self.y = 0
+            self.x = random(0, WIDTH)
+            print("point added")
