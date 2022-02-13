@@ -11,18 +11,26 @@ from Button import Button
 WIDTH = 1200   
 HEIGHT = 800  
 
+# load in image for play screen
+kitchenFloor = pygame.image.load("data/kitchenFloor.JPG")
+remyPlayer = pygame.image.load("data/remyPlayer.JPG")
+remyPlayer.convert()
+
 # make the game window option
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 # name the game window
 pygame.display.set_caption("Remy's Day Off")
 # frame rate of game per second
 FPS = 60
-#creating a player
+# creating a player
 player = Rat(WIDTH/2 - 50, 675)
-#making a crumb
+# making a crumb
 crumb = Crumb(300, 100)
-#making a knife
+# making a knife
 knife = Knife(500, 100)
+
+# fill background with image for play screen
+WINDOW.blit(kitchenFloor, (0,0)) # not working
 
 def playerMovement():
     #handle player movement from key presses
@@ -55,8 +63,9 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        # This fills the game window to be the given RGB color
-        WINDOW.fill((0,0,0))
+        # fill background with image for play screen
+        # kitchenFloor = pygame.transform.scale(kitchenFloor, 200) not workkkkking
+        WINDOW.blit(kitchenFloor, (0,0)) # not working
         
         #player functions
         player.render(WINDOW)
