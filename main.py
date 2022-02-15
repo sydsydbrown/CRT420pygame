@@ -13,7 +13,7 @@ HEIGHT = 800
 
 # load in image for play screen
 kitchenFloor = pygame.image.load("data/kitchenFloor.JPG")
-remyPlayer = pygame.image.load("data/remyPlayer.JPG")
+
 
 # make the game window option
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
