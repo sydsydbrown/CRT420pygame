@@ -1,4 +1,5 @@
 import pygame
+remyPlayer = pygame.image.load("data/remyPlayer.JPG")
 
 class Rat:
 
@@ -17,7 +18,7 @@ class Rat:
     
     #render function
     def render(self, _surface):
-        self.ratRect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.ratRect = remyPlayer.get_rect()
 
         #drawing rectangle
         pygame.draw.rect(_surface, (255, 0, 255), self.ratRect)
