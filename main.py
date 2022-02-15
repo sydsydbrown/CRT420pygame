@@ -14,7 +14,6 @@ HEIGHT = 800
 # load in image for play screen
 kitchenFloor = pygame.image.load("data/kitchenFloor.JPG")
 remyPlayer = pygame.image.load("data/remyPlayer.JPG")
-remyPlayer.convert()
 
 # make the game window option
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -65,7 +64,7 @@ def main():
 
         # fill background with image for play screen
         # kitchenFloor = pygame.transform.scale(kitchenFloor, 200) not workkkkking
-        WINDOW.blit(kitchenFloor, (0,0)) # not working
+        WINDOW.blit(kitchenFloor, (0,0)) 
         
         #player functions
         player.render(WINDOW)
