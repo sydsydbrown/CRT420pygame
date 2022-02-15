@@ -27,6 +27,8 @@ player = Rat(WIDTH/2 - 50, 675)
 crumb = Crumb(300, 100)
 # making a knife
 knife = Knife(500, 100)
+#making a button
+button = Button(100, 100, 100, 100)
 
 # fill background with image for play screen
 WINDOW.blit(kitchenFloor, (0,0)) # not working
@@ -79,6 +81,11 @@ def main():
         knife.render(WINDOW)
         knife.knifeMove(WIDTH, HEIGHT)
         knife.takeHealth(player, WIDTH)
+
+        #button functions
+        button.render(WINDOW)
+        button.clickButton()
+
         # put code here that should be ran every frame
         pygame.display.update()
 
