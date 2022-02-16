@@ -20,8 +20,9 @@ class Button:
 
     #collision detection
     def clickButton(self):
-        
         if pygame.mouse.get_pressed == True:
+            print(self.isPressed)
+
             if pygame.mouse.rect.colliderect(self.buttonRect):
                 self.isPressed = True
                 print("button was pressed")

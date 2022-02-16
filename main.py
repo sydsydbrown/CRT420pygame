@@ -21,6 +21,8 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Remy's Day Off")
 # frame rate of game per second
 FPS = 60
+# busted switch case things
+switchVal = 0
 # creating a player
 player = Rat(WIDTH/2 - 50, 675)
 # making a crumb
@@ -33,17 +35,41 @@ button = Button(100, 100, 100, 100)
 # fill background with image for play screen
 WINDOW.blit(kitchenFloor, (0,0)) # not working
 
-def playerMovement():
+def gameConditions():
+    global switchVal
+
+    if player.points == 15:
+         if player.isDead == False:
+                switchVal = 2
+    if player.isDead == True:
+        switchVal = 3
+
+def buttonPresses():
+    global switchVal
+
     #handle player movement from key presses
+    #also handle my busted switch case if elif statement ladder
     # this gets a list of booleans showing which keys are currently pressed
     keysPressed = pygame.key.get_pressed()
 
-    # if the 'w' key is pressed
+
+
+    # if the 'r' key is pressed
+    if keysPressed[pygame.K_r] == True:
+        if switchVal == 0:
+            switchVal = 1
+    
+    if keysPressed[pygame.K_f] == True:
+        if switchVal > 0:
+            switchVal = 0
+
+    # if the 'a' key is pressed
     if keysPressed[pygame.K_a] == True:
         player.x -= player.speed
+
+    #if the 'd' key is pressed
     elif keysPressed[pygame.K_d] == True:
         player.x += player.speed
-
 
 
 def main():
@@ -64,27 +90,52 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        # fill background with image for play screen
-        # kitchenFloor = pygame.transform.scale(kitchenFloor, 200) not workkkkking
-        WINDOW.blit(kitchenFloor, (0,0)) 
+        #starting/menu screen
+        if switchVal == 0:
+            buttonPresses()
+            player.health = 5
+            player.points = 0
+            player.isDead = False
+            #write code stuffs to put in menu screen
         
-        #player functions
-        player.render(WINDOW)
-        playerMovement()
+        #playing screen
+        if switchVal == 1:
+            # fill background with image for play screen
+            WINDOW.blit(kitchenFloor, (0,0)) 
 
-        #crumb functions
-        crumb.render(WINDOW)
-        crumb.crumbMove(WIDTH, HEIGHT)
-        crumb.addPoints(player, WIDTH)
+            #generic functions
+            buttonPresses()
+            gameConditions()
 
-        #knife functions
-        knife.render(WINDOW)
-        knife.knifeMove(WIDTH, HEIGHT)
-        knife.takeHealth(player, WIDTH)
+            #player functions
+            player.render(WINDOW)
+            player.ratDeath()
 
-        #button functions
-        button.render(WINDOW)
-        button.clickButton()
+            print("health", player.health)
+            print("points", player.points)
+
+            #crumb functions
+            crumb.render(WINDOW)
+            crumb.crumbMove(WIDTH, HEIGHT)
+            crumb.addPoints(player, WIDTH)
+ 
+            #knife functions
+            knife.render(WINDOW)
+            knife.knifeMove(WIDTH, HEIGHT)
+            knife.takeHealth(player, WIDTH)
+ 
+
+        #winning screen
+        if switchVal == 2:
+            buttonPresses()
+            #put in stuff here to load the winning screen
+
+        #losing screen
+        if switchVal == 3:
+            buttonPresses()
+            #put in stuff here to load the losing screen
+    
+       
 
         # put code here that should be ran every frame
         pygame.display.update()
