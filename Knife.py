@@ -7,7 +7,7 @@ class Knife:
     #class vars with constant starting vals
     width = 10
     height = 10
-    speed = 7
+    speed = random.randint(10, 15)
 
     #constructor funtion
     def __init__(self, _x, _y):

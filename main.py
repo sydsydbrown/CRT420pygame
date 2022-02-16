@@ -27,11 +27,12 @@ switchVal = 0
 # creating a player
 player = Rat(WIDTH/2 - 50, 675)
 # making a crumb
-crumb = Crumb(300, 100)
+crumb1 = Crumb(100, 0)
+crumb2 = Crumb(300, 0)
+crumb3 = Crumb(500, 0)
 # making a knife
-knife = Knife(500, 100)
-#making a button
-button = Button(100, 100, 100, 100)
+knife1 = Knife(700, 0)
+knife2 = Knife(900, 0)
 
 # fill background with image for play screen
 WINDOW.blit(kitchenFloor, (0,0)) # not working
@@ -115,15 +116,27 @@ def main():
             print("health", player.health)
             print("points", player.points)
 
+            # yes i could have used lists for the crumbs and knives
+            # no i did not want to
+
             #crumb functions
-            crumb.render(WINDOW)
-            crumb.crumbMove(WIDTH, HEIGHT)
-            crumb.addPoints(player, WIDTH)
+            crumb1.render(WINDOW)
+            crumb1.crumbMove(WIDTH, HEIGHT)
+            crumb1.addPoints(player, WIDTH)
+            crumb2.render(WINDOW)
+            crumb2.crumbMove(WIDTH, HEIGHT)
+            crumb2.addPoints(player, WIDTH)
+            crumb3.render(WINDOW)
+            crumb3.crumbMove(WIDTH, HEIGHT)
+            crumb3.addPoints(player, WIDTH)
  
             #knife functions
-            knife.render(WINDOW)
-            knife.knifeMove(WIDTH, HEIGHT)
-            knife.takeHealth(player, WIDTH)
+            knife1.render(WINDOW)
+            knife1.knifeMove(WIDTH, HEIGHT)
+            knife1.takeHealth(player, WIDTH)
+            knife2.render(WINDOW)
+            knife2.knifeMove(WIDTH, HEIGHT)
+            knife2.takeHealth(player, WIDTH)
  
 
         #winning screen

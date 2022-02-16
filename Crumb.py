@@ -7,7 +7,7 @@ class Crumb:
     #class vars with constant starting vals
     width = 10
     height = 10
-    speed = 5
+    speed = random.randint(5,10)
 
     #constructor funtion
     def __init__(self, _x, _y):
