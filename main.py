@@ -1,11 +1,11 @@
 #####
-# This file will hold all of the main functionality of our game
+# This file holds all of the main functionality of our game
 #####
 import pygame 
+import random
 from Crumb import Crumb
 from Knife import Knife
 from Rat import Rat
-from Button import Button
 
 # define the size of the game window
 WIDTH = 1200   
@@ -15,28 +15,28 @@ HEIGHT = 800
 kitchenFloor = pygame.image.load("data/kitchenFloor.JPG")
 loseScreen = pygame.image.load("data/loseScreen.JPEG")
 
-
 # make the game window option
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 # name the game window
 pygame.display.set_caption("Remy's Day Off")
 # frame rate of game per second
 FPS = 60
-# busted switch case things
+# busted switch case
 switchVal = 0
 # creating a player
 player = Rat(WIDTH/2 - 50, 675)
-# making a crumb
-crumb1 = Crumb(100, 0)
-crumb2 = Crumb(300, 0)
-crumb3 = Crumb(500, 0)
-# making a knife
-knife1 = Knife(700, 0)
-knife2 = Knife(900, 0)
+# making crumbs
+crumb1 = Crumb(random.randint(10, WIDTH - 10), 0, random.randint(5, 10))
+crumb2 = Crumb(random.randint(10, WIDTH - 10), 0, random.randint(5, 10))
+crumb3 = Crumb(random.randint(10, WIDTH - 10), 0, random.randint(5, 10))
+# making knives
+knife1 = Knife(random.randint(10, WIDTH - 10), 0, random.randint(10, 15))
+knife2 = Knife(random.randint(10, WIDTH - 10), 0, random.randint(10, 15))
 
 # fill background with image for play screen
-WINDOW.blit(kitchenFloor, (0,0)) # not working
+WINDOW.blit(kitchenFloor, (0,0))
 
+# this function makes you win the game with 15 points and lose if you've died
 def gameConditions():
     global switchVal
 
@@ -46,6 +46,7 @@ def gameConditions():
     if player.isDead == True:
         switchVal = 3
 
+# this function handles key presses for movement and resets
 def buttonPresses():
     global switchVal
 
@@ -54,22 +55,21 @@ def buttonPresses():
     # this gets a list of booleans showing which keys are currently pressed
     keysPressed = pygame.key.get_pressed()
 
-
-
-    # if the 'r' key is pressed
+    # if the 'r' key is pressed start the game
     if keysPressed[pygame.K_r] == True:
         if switchVal == 0:
             switchVal = 1
     
+    # if the 'f' key is pressed go to the menu
     if keysPressed[pygame.K_f] == True:
         if switchVal > 0:
             switchVal = 0
 
-    # if the 'a' key is pressed
+    # if the 'a' key is pressed move left
     if keysPressed[pygame.K_a] == True:
         player.x -= player.speed
 
-    #if the 'd' key is pressed
+    #if the 'd' key is pressed move right
     elif keysPressed[pygame.K_d] == True:
         player.x += player.speed
 
@@ -113,8 +113,7 @@ def main():
             player.render(WINDOW)
             player.ratDeath()
 
-            print("health", player.health)
-            print("points", player.points)
+            #i need to make a function in the rat class that displays points and health with text
 
             # yes i could have used lists for the crumbs and knives
             # no i did not want to
@@ -148,8 +147,6 @@ def main():
         if switchVal == 3:
             buttonPresses()
             #put in stuff here to load the losing screen
-    
-       
 
         # put code here that should be ran every frame
         pygame.display.update()

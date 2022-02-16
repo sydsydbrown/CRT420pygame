@@ -1,4 +1,5 @@
 import pygame
+
 WIDTH = 1200   
 HEIGHT = 800  
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -7,7 +8,7 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 class Rat:
 
     #class vars with constant starting vals
-    health = 5
+    health = 3
     width = 100
     height = 100
     speed = 10

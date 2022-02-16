@@ -1,3 +1,7 @@
+# we aren't actually even using this
+# i just left it here bc i made it 
+# it doesn't even work right lol
+
 import pygame
 
 class Button:
