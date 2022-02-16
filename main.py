@@ -11,8 +11,9 @@ from Button import Button
 WIDTH = 1200   
 HEIGHT = 800  
 
-# load in image for play screen
+# load in image for play screen and win/lose/title
 kitchenFloor = pygame.image.load("data/kitchenFloor.JPG")
+loseScreen = pygame.image.load("data/loseScreen.JPEG")
 
 
 # make the game window option
