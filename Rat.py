@@ -3,7 +3,7 @@ import pygame
 WIDTH = 1200   
 HEIGHT = 800  
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
-#remyPlayer = pygame.image.load("data/remyPlayer.JPG").convert()
+remyPlayer = pygame.image.load("data/remyPlayer.png")
 
 class Rat:
 
@@ -25,7 +25,7 @@ class Rat:
         self.ratRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (255, 0, 255), self.ratRect)
+        WINDOW.blit(remyPlayer, (self.x,self.y)) 
 
     #death function (how morbid)
     def ratDeath(self):

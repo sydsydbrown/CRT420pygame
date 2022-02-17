@@ -1,5 +1,9 @@
 import random
 import pygame
+WIDTH = 1200   
+HEIGHT = 800  
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+knifeItem = pygame.image.load("data/knifeItem.png")
 
 class Knife:
 
@@ -18,7 +22,7 @@ class Knife:
         self.knifeRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (122, 117, 106), self.knifeRect)
+        WINDOW.blit(knifeItem, (self.x,self.y)) 
 
     #movement function
     def knifeMove(self, _width, _height):

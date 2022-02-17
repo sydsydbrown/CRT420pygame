@@ -12,8 +12,10 @@ WIDTH = 1200
 HEIGHT = 800  
 
 # load in image for play screen and win/lose/title
-kitchenFloor = pygame.image.load("data/kitchenFloor.JPG")
+kitchenFloor = pygame.image.load("data/kitchenFloor.jpg")
 loseScreen = pygame.image.load("data/loseScreen.JPEG")
+winScreen = pygame.image.load("data/winScreen.JPEG")
+homeScreen = pygame.image.load("data/homeScreen.JPEG")
 
 # make the game window option
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -51,7 +53,7 @@ def buttonPresses():
     global switchVal
 
     #handle player movement from key presses
-    #also handle my busted switch case if elif statement ladder
+    # also handle my busted switch case if elif statement ladder
     # this gets a list of booleans showing which keys are currently pressed
     keysPressed = pygame.key.get_pressed()
 
@@ -94,11 +96,11 @@ def main():
 
         #starting/menu screen
         if switchVal == 0:
+            WINDOW.blit(homeScreen, (0,0))
             buttonPresses()
             player.health = 5
             player.points = 0
             player.isDead = False
-            #write code stuffs to put in menu screen
         
         #playing screen
         if switchVal == 1:
@@ -112,8 +114,6 @@ def main():
             #player functions
             player.render(WINDOW)
             player.ratDeath()
-
-            #i need to make a function in the rat class that displays points and health with text
 
             # yes i could have used lists for the crumbs and knives
             # no i did not want to
@@ -140,11 +140,13 @@ def main():
 
         #winning screen
         if switchVal == 2:
+            WINDOW.blit(winScreen, (0,0))
             buttonPresses()
             #put in stuff here to load the winning screen
 
         #losing screen
         if switchVal == 3:
+            WINDOW.blit(loseScreen, (0,0))
             buttonPresses()
             #put in stuff here to load the losing screen
 

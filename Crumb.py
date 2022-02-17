@@ -1,6 +1,10 @@
 import random
 import pygame
 
+WIDTH = 1200   
+HEIGHT = 800  
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+crumbItem = pygame.image.load("data/crumbItem.png")
 
 class Crumb:
 
@@ -19,7 +23,7 @@ class Crumb:
         self.crumbRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         #drawing rectangle
-        pygame.draw.rect(_surface, (219, 167, 77), self.crumbRect)
+        WINDOW.blit(crumbItem, (self.x,self.y)) 
 
     #movement function
     def crumbMove(self, _width, _height):
