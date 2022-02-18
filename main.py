@@ -53,7 +53,7 @@ def buttonPresses():
     global switchVal
 
     #handle player movement from key presses
-    # also handle my busted switch case if elif statement ladder
+    #also handle my busted switch case if elif statement ladder
     # this gets a list of booleans showing which keys are currently pressed
     keysPressed = pygame.key.get_pressed()
 
@@ -142,13 +142,11 @@ def main():
         if switchVal == 2:
             WINDOW.blit(winScreen, (0,0))
             buttonPresses()
-            #put in stuff here to load the winning screen
 
         #losing screen
         if switchVal == 3:
             WINDOW.blit(loseScreen, (0,0))
             buttonPresses()
-            #put in stuff here to load the losing screen
 
         # put code here that should be ran every frame
         pygame.display.update()
